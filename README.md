@@ -61,4 +61,14 @@ touch docker-compose.yml
 
 docker compose up -d
 docker compose down --remove-orphans
+
+docker exec -it django_42_tutorial-db-1 psql -U postgres postgres
+```
+
+Set up the database by,
+
+```sh
+poetry run python manage.py makemigrations polls
+poetry run python manage.py sqlmigrate polls 0001
+poetry run python manage.py migrate
 ```
