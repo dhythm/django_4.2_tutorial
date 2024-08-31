@@ -26,3 +26,11 @@ poetry install
 poetry add Django@4.2
 poetry run python -m django --version
 ```
+
+## Create a project
+
+```sh
+poetry run django-admin startproject mysite
+
+poetry run python manage.py runserver
+```
