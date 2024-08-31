@@ -72,3 +72,21 @@ poetry run python manage.py makemigrations polls
 poetry run python manage.py sqlmigrate polls 0001
 poetry run python manage.py migrate
 ```
+
+## Use Django Admin
+
+```sh
+poetry run python manage.py createsuperuser
+
+Username (leave blank to use 'dhythm'): admin
+Email address: admin@example.com
+Password: ********
+Password (again): ********
+Bypass password validation and create user anyway? [y/N]: y
+```
+
+```sh
+poetry run python manage.py runserver
+```
+
+Access to Django Admin by http://127.0.0.1:8000/admin/
