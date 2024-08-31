@@ -50,3 +50,15 @@ cd mysite
 poetry run python manage.py startapp polls
 touch polls/urls.py
 ```
+
+## Set Database
+
+Move to the rood directory.
+ref: https://hub.docker.com/_/postgres
+
+```sh
+touch docker-compose.yml
+
+docker compose up -d
+docker compose down --remove-orphans
+```
