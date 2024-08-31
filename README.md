@@ -20,11 +20,19 @@ Package to add or search for (leave blank to skip):
 Do you confirm generation? (yes/no) [yes]
 ```
 
+Install django by,
+
 ```sh
 poetry install
 
 poetry add Django@4.2
 poetry run python -m django --version
+```
+
+Install development tools by,
+
+```sh
+poetry add --dev black isort autoflake
 ```
 
 ## Create a project
