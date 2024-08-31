@@ -34,3 +34,11 @@ poetry run django-admin startproject mysite
 
 poetry run python manage.py runserver
 ```
+
+## Create Polls application
+
+```sh
+cd mysite
+poetry run python manage.py startapp polls
+touch polls/urls.py
+```
