@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "django-4-2-tutorial"
+version = "0.1.0"
+description = ""
+authors = ["dhythm <yuta.okada.20@gmail.com>"]
+readme = "README.md"
+packages = [{include = "django_4"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+django = "4.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
