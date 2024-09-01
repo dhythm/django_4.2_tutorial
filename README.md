@@ -110,7 +110,7 @@ poetry run python manage.py test polls
 Create Dockerfile for django project by,
 
 ```sh
-sh -c 'mkdir -p "$(dirname "$0")" && touch "$0"' `echo mysite/containers/Dockerfile`
+sh -c 'mkdir -p "$(dirname "$0")" && touch "$0"' `echo mysite/containers/django/Dockerfile`
 ```
 
 Start containers by,
@@ -139,4 +139,18 @@ Stop containers by,
 docker compose down
 # or
 docker compose down -v
+```
+
+## Run django with Nginx + Gunicorn
+
+Install gunicorn by,
+
+```sh
+poetry add gunicorn
+```
+
+Set up Nginx by,
+
+```sh
+sh -c 'mkdir -p "$(dirname "$0")" && touch "$0"' `echo mysite/containers/nginx/Dockerfile`
 ```
