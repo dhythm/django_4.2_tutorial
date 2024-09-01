@@ -91,6 +91,12 @@ poetry run python manage.py runserver
 
 Access to Django Admin by http://127.0.0.1:8000/admin/
 
+Get paths of default django source files by,
+
+```sh
+poetry run python -c "import django; print(django.__path__)"
+```
+
 ## Testing
 
 ```sh
