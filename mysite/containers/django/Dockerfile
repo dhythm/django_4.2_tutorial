@@ -15,4 +15,6 @@ RUN poetry config virtualenvs.create false
 RUN poetry config virtualenvs.in-project true
 RUN poetry install --no-dev
 
+RUN poetry run python manage.py collectstatic --noinput
+
 CMD ["bash"]
