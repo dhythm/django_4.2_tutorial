@@ -2,6 +2,7 @@ version: "3.9"
 
 services:
   db:
+    container_name: db
     image: postgres
     ports:
       - 5432:5432
@@ -14,14 +15,49 @@ services:
     #    target: /dev/shm
     #    tmpfs:
     #      size: 134217728 # 128*2^20 bytes = 128Mb
+    volumes:
+      - pg_data:/var/lib/postgresql/data/
     environment:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: postgres
       POSTGRES_USER: postgres
       POSTGRES_INITDB_ARGS: "--locale-provider=icu --icu-locale=en"
+    networks:
+      - mysite-network
 
   adminer:
     image: adminer
     restart: always
     ports:
       - 8080:8080
+    networks:
+      - mysite-network
+
+  mysite:
+    container_name: mysite
+    build:
+      # poetry configs cannot be copied to the container if the context is ./mysite/containers
+      context: .
+      dockerfile: ./mysite/containers/Dockerfile
+    restart: always
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    command: "poetry run python manage.py runserver 0.0.0.0:8000"
+    tty: true
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: postgres
+      DB_USER: postgres
+      DB_PASSWORD: password
+    networks:
+      - mysite-network
+
+networks:
+  mysite-network:
+    name: mysite-network
+
+volumes:
+  pg_data:

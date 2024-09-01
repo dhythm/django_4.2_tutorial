@@ -1,0 +1,18 @@
+FROM public.ecr.aws/docker/library/python:3.9-bullseye
+
+ENV PYTHONUNBUFFERED 1
+
+WORKDIR /
+
+COPY mysite ./app
+
+WORKDIR /app
+
+COPY pyproject.toml poetry.lock ./
+RUN pip install poetry
+
+RUN poetry config virtualenvs.create false
+RUN poetry config virtualenvs.in-project true
+RUN poetry install --no-dev
+
+CMD ["bash"]

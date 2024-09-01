@@ -62,7 +62,7 @@ touch docker-compose.yml
 docker compose up -d
 docker compose down --remove-orphans
 
-docker exec -it django_42_tutorial-db-1 psql -U postgres postgres
+docker exec -it db psql -U postgres postgres
 ```
 
 Set up the database by,
@@ -103,4 +103,40 @@ poetry run python -c "import django; print(django.__path__)"
 touch polls/tests.py
 
 poetry run python manage.py test polls
+```
+
+## Run django on Docker
+
+Create Dockerfile for django project by,
+
+```sh
+sh -c 'mkdir -p "$(dirname "$0")" && touch "$0"' `echo mysite/containers/Dockerfile`
+```
+
+Start containers by,
+
+```sh
+docker compose up -d
+# or
+docker compose up -d --build
+```
+
+Execute migrations by,
+
+```sh
+docker compose exec -T mysite python manage.py migrate
+```
+
+Create a superuser for Django Admin by,
+
+```sh
+docker compose exec mysite python manage.py createsuperuser
+```
+
+Stop containers by,
+
+```sh
+docker compose down
+# or
+docker compose down -v
 ```
