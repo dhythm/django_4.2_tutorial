@@ -90,3 +90,11 @@ poetry run python manage.py runserver
 ```
 
 Access to Django Admin by http://127.0.0.1:8000/admin/
+
+## Testing
+
+```sh
+touch polls/tests.py
+
+poetry run python manage.py test polls
+```
