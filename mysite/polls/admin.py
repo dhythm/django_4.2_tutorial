@@ -15,7 +15,13 @@ class QuestionAdmin(admin.ModelAdmin):
     ]
     inlines = [ChoiceInline]
     list_display = ["question_text", "pub_date", "was_published_recently"]
+    list_filter = ["pub_date"]
+    search_fields = ["question_text"]
+
+
+class ChoiceAdmin(admin.ModelAdmin):
+    autocomplete_fields = ["question"]
 
 
 admin.site.register(Question, QuestionAdmin)
-admin.site.register(Choice)
+admin.site.register(Choice, ChoiceAdmin)
