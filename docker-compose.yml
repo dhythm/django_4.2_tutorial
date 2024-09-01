@@ -72,6 +72,8 @@ services:
       - 80:80
     depends_on:
       - mysite
+    networks:
+      - mysite-network
 
 networks:
   mysite-network:

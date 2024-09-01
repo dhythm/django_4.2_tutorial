@@ -153,4 +153,5 @@ Set up Nginx by,
 
 ```sh
 sh -c 'mkdir -p "$(dirname "$0")" && touch "$0"' `echo mysite/containers/nginx/Dockerfile`
+sh -c 'mkdir -p "$(dirname "$0")" && touch "$0"' `echo mysite/containers/nginx/conf.d/default.conf`
 ```
